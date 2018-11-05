@@ -10,10 +10,14 @@ import java.util.List;
 @RequestMapping(path="/productos")
 
 public class ProductosResource {
-
+    
+    @Autowired
+    UsuariosFeign usuariosFeign;
+    
     @RequestMapping(method = RequestMethod.GET)
     public String findAllProducts(){
-        String devolucion="No existen productos";
-        return devolucion;
+        List<UsuarioDTO> usuarios=usuarios.getUsuarios();
+        return"No existen productos de la cantidad de usuarios "+ usuarios.size();
+        
     }
 }
